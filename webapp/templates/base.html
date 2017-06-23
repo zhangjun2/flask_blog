@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title%}{% endblock %}</title>
+    {% block header %}
+        <!-- 新 Bootstrap 核心 CSS 文件 -->
+        <link href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+        <link href="../static/css/style.css" rel="stylesheet">
+        <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+
+        <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+        <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    {% endblock %}
+</head>
+<body>
+<div class="wrapper">
+
+    <nav class="navbar navbar-inverse" style="margin-bottom: 0" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="{{ url_for('home')}}">首页</a>
+            </div>
+            <div>
+
+                <ul class="nav navbar-nav">
+                    {% for category in categorys %}
+                    {% if category.category_child %}
+                    <li class="dropdown">
+                        <a href="{{ url_for('home',category_id=category.id) }}" class="dropdown-toggle" data-toggle="dropdown">
+                            {{ category.category_name }} <b class="caret"></b>
+                        </a>
+
+                        <ul class="dropdown-menu">
+                            {% for c in category.category_child %}
+                            <li ><a href="/{{ c.id }}">{{ c.category_name }} {{　c.category_id }}</a></li>
+                            <li class="divider"></li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                    {% else %}
+                    <li><a href="{{ url_for('home',category_id=category.id) }}">{{ category.category_name }}</a></li>
+                    {% endif %}
+                    {% endfor %}
+
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li style="float:right"><a href="/logout">退出登录</a></li>
+                    {% if username %}
+                    <li style="float:right"><a href="/login">hello,{{ username }}</a></li>
+                    {% else %}
+                    <li style="float:right"><a href="/login">登录</a></li>
+                    {% endif %}
+                    <li style="float:right"><a href="/save">发表博客</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="content" style="width: 72%;float: left">
+        {% block content %}
+
+        {% endblock %}
+    </div>
+    <div class="rside" style="width: 28%;float: right">
+        <aside class="sidebar">
+            <div class="widget widget_archive">
+                <div class="title"><h2>文章归档</h2></div>
+                <ul>
+                    <li><a href='http://cuiqingcai.com/date/2017/06'>2017年六月</a></li>
+                    <li><a href='http://cuiqingcai.com/date/2017/05'>2017年五月</a></li>
+                    <li><a href='http://cuiqingcai.com/date/2017/04'>2017年四月</a></li>
+                    <li><a href='http://cuiqingcai.com/date/2017/03'>2017年三月</a></li>
+                    <li><a href='http://cuiqingcai.com/date/2017/02'>2017年二月</a></li>
+                    <li><a href='http://cuiqingcai.com/date/2017/01'>2017年一月</a></li>
+                    <li><a href='http://cuiqingcai.com/date/2016/12'>2016年十二月</a></li>
+                    <li><a href='http://cuiqingcai.com/date/2016/11'>2016年十一月</a></li>
+                    <li><a href='http://cuiqingcai.com/date/2016/10'>2016年十月</a></li>
+                    <li><a href='http://cuiqingcai.com/date/2016/09'>2016年九月</a></li>
+                    <li><a href='http://cuiqingcai.com/date/2016/08'>2016年八月</a></li>
+                    <li><a href='http://cuiqingcai.com/date/2016/07'>2016年七月</a></li>
+                    <li><a href='http://cuiqingcai.com/date/2016/06'>2016年六月</a></li>
+                    <li><a href='http://cuiqingcai.com/date/2016/03'>2016年三月</a></li>
+                    <li><a href='http://cuiqingcai.com/date/2016/02'>2016年二月</a></li>
+                    <li><a href='http://cuiqingcai.com/date/2016/01'>2016年一月</a></li>
+                    <li><a href='http://cuiqingcai.com/date/2015/12'>2015年十二月</a></li>
+                    <li><a href='http://cuiqingcai.com/date/2015/11'>2015年十一月</a></li>
+                    <li><a href='http://cuiqingcai.com/date/2015/10'>2015年十月</a></li>
+                    <li><a href='http://cuiqingcai.com/date/2015/09'>2015年九月</a></li>
+                    <li><a href='http://cuiqingcai.com/date/2015/08'>2015年八月</a></li>
+                    <li><a href='http://cuiqingcai.com/date/2015/07'>2015年七月</a></li>
+                    <li><a href='http://cuiqingcai.com/date/2015/06'>2015年六月</a></li>
+                    <li><a href='http://cuiqingcai.com/date/2015/05'>2015年五月</a></li>
+                    <li><a href='http://cuiqingcai.com/date/2015/04'>2015年四月</a></li>
+                    <li><a href='http://cuiqingcai.com/date/2015/03'>2015年三月</a></li>
+                    <li><a href='http://cuiqingcai.com/date/2015/02'>2015年二月</a></li>
+                    <li><a href='http://cuiqingcai.com/date/2015/01'>2015年一月</a></li>
+                    <li><a href='http://cuiqingcai.com/date/2014/12'>2014年十二月</a></li>
+                    <li><a href='http://cuiqingcai.com/date/2014/11'>2014年十一月</a></li>
+                    <li><a href='http://cuiqingcai.com/date/2014/10'>2014年十月</a></li>
+                    <li><a href='http://cuiqingcai.com/date/2014/09'>2014年九月</a></li>
+                </ul>
+            </div>
+
+            <div class="widget d_postlist">
+                <div class="title"><h2>猜你喜欢</h2></div>
+                <ul>
+                    <li><a href="http://cuiqingcai.com/990.html" title="Python爬虫实战一之爬取糗事百科段子"><span
+                            class="thumbnail"><img
+                            src="http://cuiqingcai.com/wp-content/themes/Yusi/timthumb.php?src=http://qiniu.cuiqingcai.com/wp-content/uploads/2015/02/wallpaper_5228661.jpg&h=64&w=100&q=90&zc=1&ct=1"
+                            alt="Python爬虫实战一之爬取糗事百科段子"/></span><span class="text">Python爬虫实战一之爬取糗事百科段子</span><span
+                            class="muted">2015-02-17</span><span class="muted">525评论</span></a></li>
+                    <li><a href="http://cuiqingcai.com/993.html" title="Python爬虫实战二之爬取百度贴吧帖子"><span
+                            class="thumbnail"><img
+                            src="http://cuiqingcai.com/wp-content/themes/Yusi/timthumb.php?src=http://qiniu.cuiqingcai.com/wp-content/uploads/2015/02/wallpaper_5265936.jpg&h=64&w=100&q=90&zc=1&ct=1"
+                            alt="Python爬虫实战二之爬取百度贴吧帖子"/></span><span class="text">Python爬虫实战二之爬取百度贴吧帖子</span><span
+                            class="muted">2015-02-17</span><span class="muted">180评论</span></a></li>
+                    <li><a href="http://cuiqingcai.com/1001.html" title="Python爬虫实战四之抓取淘宝MM照片"><span
+                            class="thumbnail"><img
+                            src="http://cuiqingcai.com/wp-content/themes/Yusi/timthumb.php?src=http://qiniu.cuiqingcai.com/wp-content/uploads/2015/02/wallpaper_5270641.jpg&h=64&w=100&q=90&zc=1&ct=1"
+                            alt="Python爬虫实战四之抓取淘宝MM照片"/></span><span class="text">Python爬虫实战四之抓取淘宝MM照片</span><span
+                            class="muted">2015-02-20</span><span class="muted">148评论</span></a></li>
+                    <li><a href="http://cuiqingcai.com/1076.html" title="Python爬虫实战五之模拟登录淘宝并获取所有订单"><span
+                            class="thumbnail"><img
+                            src="http://cuiqingcai.com/wp-content/themes/Yusi/timthumb.php?src=http://qiniu.cuiqingcai.com/wp-content/uploads/2015/02/wallpaper_5226152.jpg&h=64&w=100&q=90&zc=1&ct=1"
+                            alt="Python爬虫实战五之模拟登录淘宝并获取所有订单"/></span><span
+                            class="text">Python爬虫实战五之模拟登录淘宝并获取所有订单</span><span
+                            class="muted">2015-02-24</span><span class="muted">129评论</span></a></li>
+                    <li><a href="http://cuiqingcai.com/3179.html" title="小白爬虫第一弹之抓取妹子图"><span class="thumbnail"><img
+                            src="http://cuiqingcai.com/wp-content/themes/Yusi/timthumb.php?src=http://qiniu.cuiqingcai.com/wp-content/uploads/2016/10/1-1506261ZI7.jpg&h=64&w=100&q=90&zc=1&ct=1"
+                            alt="小白爬虫第一弹之抓取妹子图"/></span><span class="text">小白爬虫第一弹之抓取妹子图</span><span class="muted">2016-10-28</span><span
+                            class="muted">123评论</span></a></li>
+                    <li><a href="http://cuiqingcai.com/2652.html" title="Python爬虫进阶四之PySpider的用法"><span
+                            class="thumbnail"><img
+                            src="http://cuiqingcai.com/wp-content/themes/Yusi/timthumb.php?src=http://qiniu.cuiqingcai.com/wp-content/uploads/2016/03/兔小妖39.jpg&h=64&w=100&q=90&zc=1&ct=1"
+                            alt="Python爬虫进阶四之PySpider的用法"/></span><span class="text">Python爬虫进阶四之PySpider的用法</span><span
+                            class="muted">2016-03-26</span><span class="muted">122评论</span></a></li>
+                    <li><a href="http://cuiqingcai.com/1052.html" title="Python爬虫学习系列教程"><span class="thumbnail"><img
+                            src="http://cuiqingcai.com/wp-content/themes/Yusi/timthumb.php?src=http://qiniu.cuiqingcai.com/wp-content/uploads/2015/02/wallpaper_5254665-e1424499272248.jpg&h=64&w=100&q=90&zc=1&ct=1"
+                            alt="Python爬虫学习系列教程"/></span><span class="text">Python爬虫学习系列教程</span><span class="muted">2015-02-21</span><span
+                            class="muted">106评论</span></a></li>
+                    <li><a href="http://cuiqingcai.com/3472.html" title="小白进阶之Scrapy第一篇"><span class="thumbnail"><img
+                            src="http://cuiqingcai.com/wp-content/themes/Yusi/timthumb.php?src=http://qiniu.cuiqingcai.com/wp-content/uploads/2016/07/DSC00123.jpg&h=64&w=100&q=90&zc=1&ct=1"
+                            alt="小白进阶之Scrapy第一篇"/></span><span class="text">小白进阶之Scrapy第一篇</span><span class="muted">2016-12-07</span><span
+                            class="muted">105评论</span></a></li>
+                    <li><a href="http://cuiqingcai.com/968.html" title="Python爬虫入门六之Cookie的使用"><span
+                            class="thumbnail"><img
+                            src="http://cuiqingcai.com/wp-content/themes/Yusi/timthumb.php?src=http://qiniu.cuiqingcai.com/wp-content/uploads/2015/02/wallpaper_5258536-1.jpg&h=64&w=100&q=90&zc=1&ct=1"
+                            alt="Python爬虫入门六之Cookie的使用"/></span><span class="text">Python爬虫入门六之Cookie的使用</span><span
+                            class="muted">2015-02-15</span><span class="muted">102评论</span></a></li>
+                    <li><a href="http://cuiqingcai.com/2416.html" title="弃用多说，改用畅言"><span class="thumbnail"><img
+                            src="http://cuiqingcai.com/wp-content/themes/Yusi/timthumb.php?src=http://qiniu.cuiqingcai.com/wp-content/uploads/2016/02/bg1-e1454442892955.jpg&h=64&w=100&q=90&zc=1&ct=1"
+                            alt="弃用多说，改用畅言"/></span><span class="text">弃用多说，改用畅言</span><span
+                            class="muted">2016-02-03</span><span
+                            class="muted">77评论</span></a></li>
+                </ul>
+            </div>
+            <div class="widget d_tag">
+                <div class="title"><h2>标签云</h2></div>
+                <div class="d_tags"><a title="41个话题" href="http://cuiqingcai.com/tag/python">Python (41)</a><a
+                        title="37个话题"
+                        href="http://cuiqingcai.com/tag/%e7%88%ac%e8%99%ab">爬虫
+                    (37)</a><a title="31个话题" href="http://cuiqingcai.com/tag/php">PHP (31)</a><a title="21个话题"
+                                                                                                 href="http://cuiqingcai.com/tag/js">JS
+                    (21)</a><a title="12个话题" href="http://cuiqingcai.com/tag/html">HTML (12)</a><a title="11个话题"
+                                                                                                   href="http://cuiqingcai.com/tag/opengl">OpenGL
+                    (11)</a><a title="9个话题" href="http://cuiqingcai.com/tag/jquery">jQuery (9)</a><a title="7个话题"
+                                                                                                     href="http://cuiqingcai.com/tag/linux">Linux
+                    (7)</a><a title="7个话题" href="http://cuiqingcai.com/tag/wordpress">WordPress (7)</a><a title="7个话题"
+                                                                                                          href="http://cuiqingcai.com/tag/winpcap">Winpcap
+                    (7)</a><a title="6个话题" href="http://cuiqingcai.com/tag/css">CSS (6)</a><a title="6个话题"
+                                                                                              href="http://cuiqingcai.com/tag/security">Security
+                    (6)</a><a title="4个话题" href="http://cuiqingcai.com/tag/git">Git (4)</a><a title="4个话题"
+                                                                                              href="http://cuiqingcai.com/tag/bootstrap">Bootstrap
+                    (4)</a><a title="4个话题" href="http://cuiqingcai.com/tag/net">Net (4)</a><a title="3个话题"
+                                                                                              href="http://cuiqingcai.com/tag/java">Java
+                    (3)</a><a title="3个话题" href="http://cuiqingcai.com/tag/mysql">Mysql (3)</a><a title="2个话题"
+                                                                                                  href="http://cuiqingcai.com/tag/cocos2d-x">Cocos2d-x
+                    (2)</a><a title="2个话题" href="http://cuiqingcai.com/tag/jsp">JSP (2)</a><a title="2个话题"
+                                                                                              href="http://cuiqingcai.com/tag/matlab">Matlab
+                    (2)</a><a title="2个话题" href="http://cuiqingcai.com/tag/photoshop">Photoshop (2)</a><a title="2个话题"
+                                                                                                          href="http://cuiqingcai.com/tag/less">LESS
+                    (2)</a><a title="2个话题" href="http://cuiqingcai.com/tag/sass">SASS (2)</a><a title="1个话题"
+                                                                                                href="http://cuiqingcai.com/tag/json">Json
+                    (1)</a><a title="1个话题" href="http://cuiqingcai.com/tag/redis">Redis (1)</a><a title="1个话题"
+                                                                                                  href="http://cuiqingcai.com/tag/nginx">Nginx
+                    (1)</a><a title="1个话题" href="http://cuiqingcai.com/tag/appium">Appium (1)</a><a title="1个话题"
+                                                                                                    href="http://cuiqingcai.com/tag/gulp">Gulp
+                    (1)</a><a title="1个话题" href="http://cuiqingcai.com/tag/laravel">Laravel (1)</a><a title="1个话题"
+                                                                                                      href="http://cuiqingcai.com/tag/%e6%b5%8b%e8%af%95">测试
+                    (1)</a><a title="1个话题" href="http://cuiqingcai.com/tag/app">APP (1)</a><a title="1个话题"
+                                                                                              href="http://cuiqingcai.com/tag/ssh">SSH
+                    (1)</a><a title="1个话题" href="http://cuiqingcai.com/tag/scrapy%e5%88%86%e5%b8%83%e5%bc%8f">Scrapy分布式
+                    (1)</a><a title="1个话题" href="http://cuiqingcai.com/tag/%e8%a7%86%e9%a2%91">视频 (1)</a><a title="1个话题"
+                                                                                                            href="http://cuiqingcai.com/tag/python3">Python3
+                    (1)</a><a title="1个话题" href="http://cuiqingcai.com/tag/scrapy">Scrapy (1)</a><a title="1个话题"
+                                                                                                    href="http://cuiqingcai.com/tag/%e7%9f%a5%e4%b9%8e">知乎
+                    (1)</a></div>
+            </div>
+        </aside>
+    </div>
+</div>
+</body>
+</html>

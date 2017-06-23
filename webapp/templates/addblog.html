@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>新建文章</title>
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container" style="width:100%;margin-top:300px">
+
+    <form name="login" class="form-horizontal" role="form" enctype="multipart/form-data"
+          action="{{ url_for('article.save_article') }}" method="post">
+
+        <div class="form-group">
+            <label for="title" class="col-sm-offset-2 col-sm-2 control-label">标题</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="title" name="title" placeholder="">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="type" class="col-sm-offset-2 col-sm-2 control-label">文章类别</label>
+            <div class="col-sm-4">
+                <input list="article-type" class="form-control" id="type" name="type">
+                <datalist id="article-type">
+                    {% for c in category %}
+                        <option value="{{ c.category_name }}">
+                    {% endfor %}
+                </datalist>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="content" class="col-sm-offset-2 col-sm-2 control-label">内容</label>
+            <div class="col-sm-4">
+                <textarea type="text" class="form-control" id="content" name="content"></textarea>
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-4 col-sm-offset-4">
+                <input type="file" name="fileName"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-offset-4 col-sm-8">
+                <button type="submit" class="btn btn-primary">保存</button>
+            </div>
+        </div>
+
+    </form>
+
+</div>
+
+</body>
+</html>

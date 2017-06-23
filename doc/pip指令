@@ -1,0 +1,6 @@
+使用
+pip freeze > requirements.txt
+产生requirements.txt文件
+在另一个环境下使用
+pip install -r requirements.txt
+安装包

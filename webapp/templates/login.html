@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>登录</title>
+    <title>Title</title>
+</head>
+<body>
+
+<div class="container" style="width:60%;background-color:rgb(248,248,248);margin-top:300px;padding:40px">
+
+    <form name="login" class="form-horizontal" role="form" action="{{ url_for('user.login') }}" method="post">
+
+        <div class="form-group">
+            <label for="username" class="col-sm-offset-2 col-sm-2 control-label">用户名</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="username" name="username" placeholder="请输入用户名">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="password" class="col-sm-offset-2 col-sm-2 control-label">密码</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="password" name="password">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-offset-4 col-sm-8">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox">请记住我
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-offset-4 col-sm-1">
+                <button type="submit" class="btn btn-primary">登录</button>
+            </div>
+
+            <div class="col-sm-4">
+                <a href="{{ url_for('user.register') }}">没有账号？去注册</a>
+            </div>
+        </div>
+
+         <div class="form-group">
+            <div class="col-sm-offset-4 col-sm-1">
+                {% for message in get_flashed_messages() %}
+                    <span>{{ message }}</span>
+                {% endfor %}
+            </div>
+
+        </div>
+
+
+    </form>
+</div>
+</body>
+</html>

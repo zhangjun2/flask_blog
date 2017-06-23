@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}张军的个人博客{% endblock %}
+{% block header %}{{ super() }}{% endblock %}
+{% block content %}
+    <h1>{{ article.title }}</h1>
+    <p style="margin:20px">
+        <span>{{ article.author}}</span>
+        <span>{{ article.count_scan}}浏览</span>
+    </p>
+    <p>{{ article.content }}</p>
+
+
+    <div>
+        <form id="comment" action="{{ url_for('article.comment',article_id=article.id) }}" METHOD="post">
+            <textarea name="content" id="content"></textarea>
+            <button type="submit">评论</button>
+        </form>
+
+    </div>
+
+    <table class="table table-bordered">
+        <caption>评论</caption>
+        <thead>
+        <tr>
+            <th>评论人</th>
+            <th>评论内容</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for comment in article.comments_list%}
+            <tr>
+                <td>{{ comment.username}}</td>
+                <td>{{ comment.content}}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock content %}
