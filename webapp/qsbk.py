@@ -1,6 +1,7 @@
 import urllib
 import urllib.request
 import urllib.response
+from functools import reduce
 
 page = 1
 # url ='http://www.qiushibaike.com'
@@ -28,5 +29,18 @@ class qsbk:
             print(e)
 
 
-qsbk = qsbk()
-qsbk.post_req(url)
+# qsbk = qsbk()
+# qsbk.post_req(url)
+
+# def prod(L):
+#     return reduce(lambda x,y:x*y,L)
+#
+# print(prod([1,2,3,5,6]))
+
+L = [('Bob', 75), ('Adam', 92), ('Bart', 66), ('Lisa', 88)]
+
+def by_name(t):
+    return t[1]
+
+L2 = sorted(L, key=by_name,reverse=True)
+print(L2)

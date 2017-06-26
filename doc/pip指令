@@ -4,3 +4,15 @@ pip freeze > requirements.txt
 在另一个环境下使用
 pip install -r requirements.txt
 安装包
+
+*kw可变参数，接收一个list
+**k关键字参数，接收一个dict
+*,city,job 命名关键字参数
+
+如果前面有可变参数，只需要*kw,city,job，后面的city，job就成了命名关键字参数
+
+__slots__ 限制class的属性
+__str__
+__repr__
+
+
