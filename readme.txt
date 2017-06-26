@@ -1,1 +1,1 @@
-这是我学习Flask过程做的一个个人博客网站,持续学习，持续改善
+a simple blog system based on flask
