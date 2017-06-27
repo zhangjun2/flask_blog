@@ -44,7 +44,7 @@ def detail_article(article_id):
 def comment(article_id):
     if request.method == 'POST':
         username = request.cookies.get('username')
-        userid = request.cookies.get('id')
+        userid = request.cookies.get('userid')
         comment_content = request.form['content']
         insert_comment(userid,username,comment_content,article_id)
         return redirect(url_for('article.detail_article', article_id=article_id))
