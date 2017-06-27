@@ -2,21 +2,20 @@
 {% block title %}张军的个人博客{% endblock %}
 {% block header %}{{ super() }}{% endblock %}
 {% block content %}
-    <div style="width:100%;height:300px;padding:4px">
-        <!--<div style="float:left;margin:0px;height:100%;width:15%">-->
+    <div style="width:100%;height:300px;padding:4px;background: black">
+        <div style="float:left;margin:0px;height:100%;width:20%;">
+            <ul id="banner" style="list-style-type:none;background-color:white;margin:0px;float: left;padding:0">
+                <li ><img src="../static/images/timthumb.jpg" style="height:70px"></li>
+                <li ><img src="../static/images/timthumb1.jpg" style="margin-top:4px;height:70px">
+                </li>
+                <li ><img src="../static/images/timthumb2.jpg" style="margin-top:4px;height:70px">
+                </li>
+                <li ><img src="../static/images/timthumb2.jpg" style="margin-top:4px;height:70px">
+                </li>
+            </ul>
+        </div>
 
-            <!--<ul id="banner" style="list-style-type:none;background-color:white;margin:0px;">-->
-                <!--<li style="text-align:center"><img src="../static/images/timthumb.jpg" style="height:70px"></li>-->
-                <!--<li style="text-align:center"><img src="../static/images/timthumb1.jpg" style="margin-top:4px;height:70px">-->
-                <!--</li>-->
-                <!--<li style="text-align:center"><img src="../static/images/timthumb2.jpg" style="margin-top:4px;height:70px">-->
-                <!--</li>-->
-                <!--<li style="text-align:center"><img src="../static/images/timthumb2.jpg" style="margin-top:4px;height:70px">-->
-                <!--</li>-->
-            <!--</ul>-->
-        <!--</div>-->
-
-        <div id="myCarousel" class="carousel slide" style="width:100%;height:100%;float: right">
+        <div id="myCarousel" class="carousel slide"style="width:78%;height:100%;float: right">
             <!-- 轮播（Carousel）指标 -->
             <ol class="carousel-indicators">
                 <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -26,17 +25,17 @@
             <!-- 轮播（Carousel）项目 -->
             <div class="carousel-inner" style="width:100%;height:100%">
                 <div class="item active" style="width:100%;height:100%;margin:0px;padding:0px">
-                    <img src="../static/images/title1.jpg"
-                         alt="First slide" style="width:100%;height:100%">
+                    <img src="../static/images/title1.jpg" style="width: 100%;height: 100%"
+                         alt="First slide" >
                     <div class="carousel-caption">标题 1</div>
                 </div>
-                <div class="item" style="margin:0px;padding:0px">
-                    <img src="../static/images/title2.jpeg"
+                <div class="item" style="width:100%;height:100%;margin:0px;padding:0px">
+                    <img src="../static/images/title2.jpeg"style="width: 100%;height: 100%"
                          alt="Second slide">
                     <div class="carousel-caption">标题 2</div>
                 </div>
-                <div class="item" style="margin:0px;padding:0px">
-                    <img src="../static/images/title3.jpg"
+                <div class="item" style="width:100%;height:100%;margin:0px;padding:0px">
+                    <img src="../static/images/title3.jpg"style="width: 100%;height: 100%"
                          alt="Third slide">
                     <div class="carousel-caption">标题 3</div>
                 </div>
@@ -53,40 +52,42 @@
     </div>
 
     {% for article in articles %}
-        <article class="article">
+        <div class="article">
             <div>
+                <div>
+                    <p style="width:15%;float: left"><a class="label label-danger">{{ article.category_name }}</a></p>
+                    <p style="width: 85%;float:right;font-size:16px;">
+                        <a target="_blank" href="{{ url_for('article.detail_article',article_id=article.id) }}"
+                           title="利用新接口抓取微信公众号的所有文章">{{ article.title }}</a>
+                    </p>
+                </div>
 
-                <p style="width:15%;float: left"><a class="label label-danger" >{{ article.category_name }}</a></p>
-                <p style="width: 85%;float:right;font-size:16px;">
-                    <a target="_blank" href="{{ url_for('article.detail_article',article_id=article.id) }}"
-                       title="利用新接口抓取微信公众号的所有文章">{{ article.title }}</a>
-                </p>
+
+                <div style="height: 150px">
+                    <p style="width: 28%;float: left"><a target="_blank"
+                                                         href="{{ url_for('article.detail_article',article_id=article.id) }}">
+                        <img class="img-thumbnail"
+                             src="http://cuiqingcai.com/wp-content/themes/Yusi/timthumb.php?src=http://qiniu.cuiqingcai.com/wp-content/uploads/2016/03/34.jpg&h=123&w=200&q=90&zc=1&ct=1"
+                             alt="利用新接口抓取微信公众号的所有文章"/></a></p>
+                    <p style="color:#777;line-height:24px;margin-bottom:0;font-style: normal;width: 70%;float: right">{{
+                        article.content }}</p>
+                </div>
             </div>
 
-
-        <div style="height: 150px">
-            <p style="width: 28%;float: left"><a target="_blank" href="{{ url_for('article.detail_article',article_id=article.id) }}">
-                <img class="img-thumbnail"
-                     src="http://cuiqingcai.com/wp-content/themes/Yusi/timthumb.php?src=http://qiniu.cuiqingcai.com/wp-content/uploads/2016/03/34.jpg&h=123&w=200&q=90&zc=1&ct=1"
-                     alt="利用新接口抓取微信公众号的所有文章"/></a></p>
-            <p style="color:#777;line-height:24px;margin-bottom:0;font-style: normal;width: 70%;float: right">{{ article.content }}</p>
-        </div>
-
         <div style="margin-top: 15px">
-            <p>
-                <span class="col-sm-2"><a href="http://cuiqingcai.com/author/aiyo">{{
+            <p style="width:40%;float: right">
+                <span ><a href="http://cuiqingcai.com/author/aiyo">{{
                             article.author }}</a></span>
-                <span class="col-sm-2"> {{ article.count_scan }}浏览</span>
-                <span class="col-sm-2"> <a
+                <span style="position: relative;left: 15px"> {{ article.count_scan }}浏览</span>
+                <span style="position: relative;left: 30px"> <a
                         target="_blank"
                         href="http://cuiqingcai.com/4652.html#comments">{{ article.count_comments }}评论</a></span>
-                <span class="col-sm-2">
-                            <a href="javascript:;" data-action="ding" data-id="4652" id="Addlike" class="action"><i
-                                    class="fa fa-heart-o"></i>
+                <span style="position: relative;left: 30px">
+                            <a href="javascript:;" data-action="ding" data-id="4652" id="Addlike" class="action">
                             <span class="count">{{ article.count_like }}</span>喜欢</a></span>
             </p>
         </div>
-    </article>
+    </div>
     {% endfor %}
 
     <ul class="pagination" style="margin: 20px auto;float: right">

@@ -16,7 +16,7 @@ app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
 @app.route('/')
 def home(category_id=None):
     username = request.cookies.get('username')
-    id = request.cookies.get('id')
+    id = request.cookies.get('userid')
     realname = request.cookies.get('realname')
     if username:
         if category_id is not None:
@@ -26,7 +26,7 @@ def home(category_id=None):
         for ar in articles:
             ar.category_name = Blog_category.query.get(ar.category_id).category_name
         category = get_blog_category()
-        return render_template('home.html', username=realname,categorys=category, articles=articles)
+        return render_template('home.html', username=username,categorys=category, articles=articles)
     else:
         return redirect(url_for('user.login'))
 

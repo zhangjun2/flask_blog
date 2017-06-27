@@ -16,13 +16,18 @@ def login():
         password = request.form['password']
         if user_login(username,password):
             session['username'] = request.form['username']
+            session['login'] = True
             # return redirect(url_for('home',username=username))
             flash(u'登录成功！')
             resp = make_response(redirect(url_for('home')))
             resp.set_cookie('username', username)
-            print(username)
+            id = User.query.filter(User.username==username).first().id
+            print(id)
+            resp.set_cookie('userid',str(id))
+            # print(username)
         else:
             flash(u'用户名或密码错误！')
+            session['login'] = False
             return redirect(url_for('user.login'))
     else:
         resp = make_response(render_template('login.html'))

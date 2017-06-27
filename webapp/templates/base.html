@@ -46,11 +46,12 @@
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right">
-                    <li style="float:right"><a href="/logout">退出登录</a></li>
-                    {% if username %}
-                    <li style="float:right"><a href="/login">hello,{{ username }}</a></li>
+
+                    {% if session.login %}
+                        <li style="float:right"><a href="/logout">退出登录</a></li>
+                        <li style="float:right"><a href="/login">hello,{{ username }}</a></li>
                     {% else %}
-                    <li style="float:right"><a href="/login">登录</a></li>
+                        <li style="float:right"><a href="/login">登录</a></li>
                     {% endif %}
                     <li style="float:right"><a href="/save">发表博客</a></li>
                 </ul>
@@ -65,42 +66,9 @@
     </div>
     <div class="rside" style="width: 28%;float: right">
         <aside class="sidebar">
-            <div class="widget widget_archive">
-                <div class="title"><h2>文章归档</h2></div>
-                <ul>
-                    <li><a href='http://cuiqingcai.com/date/2017/06'>2017年六月</a></li>
-                    <li><a href='http://cuiqingcai.com/date/2017/05'>2017年五月</a></li>
-                    <li><a href='http://cuiqingcai.com/date/2017/04'>2017年四月</a></li>
-                    <li><a href='http://cuiqingcai.com/date/2017/03'>2017年三月</a></li>
-                    <li><a href='http://cuiqingcai.com/date/2017/02'>2017年二月</a></li>
-                    <li><a href='http://cuiqingcai.com/date/2017/01'>2017年一月</a></li>
-                    <li><a href='http://cuiqingcai.com/date/2016/12'>2016年十二月</a></li>
-                    <li><a href='http://cuiqingcai.com/date/2016/11'>2016年十一月</a></li>
-                    <li><a href='http://cuiqingcai.com/date/2016/10'>2016年十月</a></li>
-                    <li><a href='http://cuiqingcai.com/date/2016/09'>2016年九月</a></li>
-                    <li><a href='http://cuiqingcai.com/date/2016/08'>2016年八月</a></li>
-                    <li><a href='http://cuiqingcai.com/date/2016/07'>2016年七月</a></li>
-                    <li><a href='http://cuiqingcai.com/date/2016/06'>2016年六月</a></li>
-                    <li><a href='http://cuiqingcai.com/date/2016/03'>2016年三月</a></li>
-                    <li><a href='http://cuiqingcai.com/date/2016/02'>2016年二月</a></li>
-                    <li><a href='http://cuiqingcai.com/date/2016/01'>2016年一月</a></li>
-                    <li><a href='http://cuiqingcai.com/date/2015/12'>2015年十二月</a></li>
-                    <li><a href='http://cuiqingcai.com/date/2015/11'>2015年十一月</a></li>
-                    <li><a href='http://cuiqingcai.com/date/2015/10'>2015年十月</a></li>
-                    <li><a href='http://cuiqingcai.com/date/2015/09'>2015年九月</a></li>
-                    <li><a href='http://cuiqingcai.com/date/2015/08'>2015年八月</a></li>
-                    <li><a href='http://cuiqingcai.com/date/2015/07'>2015年七月</a></li>
-                    <li><a href='http://cuiqingcai.com/date/2015/06'>2015年六月</a></li>
-                    <li><a href='http://cuiqingcai.com/date/2015/05'>2015年五月</a></li>
-                    <li><a href='http://cuiqingcai.com/date/2015/04'>2015年四月</a></li>
-                    <li><a href='http://cuiqingcai.com/date/2015/03'>2015年三月</a></li>
-                    <li><a href='http://cuiqingcai.com/date/2015/02'>2015年二月</a></li>
-                    <li><a href='http://cuiqingcai.com/date/2015/01'>2015年一月</a></li>
-                    <li><a href='http://cuiqingcai.com/date/2014/12'>2014年十二月</a></li>
-                    <li><a href='http://cuiqingcai.com/date/2014/11'>2014年十一月</a></li>
-                    <li><a href='http://cuiqingcai.com/date/2014/10'>2014年十月</a></li>
-                    <li><a href='http://cuiqingcai.com/date/2014/09'>2014年九月</a></li>
-                </ul>
+            <div class="widget widget_archive"style="border: groove;margin-top: 10px;border-color: #4cae4c">
+                <div class="title" ><h2>ABOUT ME</h2></div>
+                <P style="text-align: center;size: 30px;margin-top: 40px;margin-bottom: 40px">Android开发工程师</P>
             </div>
 
             <div class="widget d_postlist">
@@ -200,6 +168,9 @@
             </div>
         </aside>
     </div>
+
 </div>
+    <div style="width:100px;height:200px;position: fixed;right: 0;background: black;
+            margin-top: auto;margin-bottom: auto;z-index: 10"></div>
 </body>
 </html>
